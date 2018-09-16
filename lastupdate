@@ -1,0 +1,65 @@
+int leftir=A2;
+int rightir=A0;
+
+const int vspeed=130;
+const int turnspeed=230;
+const int turndelay=10;
+
+int digitalrdright() {
+  int ri;
+  int x=analogRead(rightir);
+  if(x>500) {
+  ri=0;
+} else {
+  ri=1;
+} return ri;
+}
+
+int digitalrdleft() {
+  int li;
+  int y=analogRead(leftir);
+  if(y>500) {
+  li=0;
+} else {
+  li=1;
+} return li;
+}
+
+
+void setup() {
+  pinMode(A0, INPUT);
+  pinMode(A2, INPUT);
+  Serial.begin(9600);
+  
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  int ri,li;
+/*int x=analogRead(rightir);
+int y=analogRead(leftir);
+int li,ri;
+if(x>500) {
+  ri=0;
+} else {
+  ri=1;
+}
+if(y>500) {
+  li=0;
+} else {
+  li=1;
+}*/
+ri=digitalrdright();
+li=digitalrdleft();
+Serial.print("ri=");
+Serial.println(ri);
+Serial.print("li=");
+Serial.println(li);
+
+delay(1000);
+
+  
+  // put your main code here, to run repeatedly:
+
+}
