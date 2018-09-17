@@ -1,8 +1,8 @@
 int leftir=A2;
 int rightir=A0;
 
-const int vspeed=130;
-const int turnspeed=230;
+const int vspeed=85;
+const int turnspeed=85;
 const int turndelay=10;
 
   const int motorA1      = 3;  
@@ -19,7 +19,8 @@ int digitalrdright() {
   ri=0;
 } else {
   ri=1;
-} Serial.println(ri);
+} Serial.print("ri");
+Serial.println(ri);
 return ri;
 }
 
@@ -31,6 +32,7 @@ int digitalrdleft() {
 } else {
   li=1;
 } 
+Serial.print("li");
 Serial.println(li);
 return li;
 }
@@ -85,7 +87,7 @@ void turnright() {
   analogWrite(motorAspeed, turnspeed);
   digitalWrite(motorB1,LOW);
   digitalWrite(motorB2,HIGH);
-  analogWrite(motorBspeed, vspeed);
+  analogWrite(motorBspeed, 0);
   Serial.println("turnright");
 }
 
@@ -95,7 +97,7 @@ void turnleft() {
   analogWrite(motorBspeed, turnspeed);
   digitalWrite(motorA1,HIGH);
   digitalWrite(motorA2,LOW);
-  analogWrite(motorAspeed, vspeed);
+  analogWrite(motorAspeed, 0);
   Serial.println("turnleft");
 }void mstop() {
   digitalWrite(motorB1,LOW);
@@ -138,10 +140,10 @@ delay(1000);*/
 int ris=digitalrdright();
 int lis=digitalrdleft();
 if(ris==1 && lis==0) {
-  turnleft();
+  turnright();
 }
 if(ris==0 && lis==1) {
-  turnright();
+  turnleft();
 }
 if (ris==0 && lis==0) {
   forward();
